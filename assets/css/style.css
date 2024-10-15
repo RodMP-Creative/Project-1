@@ -1,0 +1,58 @@
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Recipe container */
+article {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;    
+}
+
+/* Recipe cards */
+.recipe {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-color: c3c3c3;
+    border-width: 2px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Recipe name format here */
+.recipeTitle {
+text-align: left;
+text-transform: uppercase;
+font-weight: bolder;
+}
+
+/* Recipe name format here */
+.recipeDescription{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+    justify-content: baseline;
+
+}
+
+/* Format for the "Ingredients" and "Steps" subtitle*/
+.recipeSubtitle {
+text-align: left;
+text-transform: uppercase;
+font-weight: bold;
+}
+
+/*Ingredient list format*/
+.recipeIngredients{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/*Step list format*/
+.recipeSteps{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
