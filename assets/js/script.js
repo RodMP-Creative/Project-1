@@ -1,18 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const form = document.getElementById('recipeAdd');
+    const form = document.getElementById('recipeForm');
     const recipeCardsContainer = document.getElementById('recipeCards');
 
+    // Waits for submit button in order toi run "saveRecipe" function and dave input values.
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         saveRecipe();
     });
 
+    // Function to save recipe in local storage
     function saveRecipe() {
         const title = document.getElementById('title').value;
         const ingredients = document.getElementById('ingredients').value;
         const instructions = document.getElementById('instructions').value;
 
+        // Object  that will be saved in local storage with unique id
         const recipe = {
             id: Date.now(),
             title,
@@ -20,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             instructions
         };
 
+        // Load recipes from local storage and turn them into an array.
         let recipes = loadRecipes();
         recipes.push(recipe);
         localStorage.setItem('recipes', JSON.stringify(recipes));
@@ -59,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayRecipes();
 });
+
 let recipes = ['arroz con leche', 'pan de platano', 'pan frances'];
 
 function getInputValue() {
