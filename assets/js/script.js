@@ -1,6 +1,7 @@
 // Get the form and the container where the recipe cards will be displayed.
 const form = document.getElementById('recipeForm');
 const recipeCardsContainer = document.getElementById('recipeCards');
+const searchInput = document.getElementById('searchInput');
 
 document.addEventListener('DOMContentLoaded', () => {
     // Get the modal and the buttons that open and close it.
@@ -41,7 +42,7 @@ function displayRecipes(filteredRecipes) {
     let recipes = filteredRecipes ? filteredRecipes : getRecipes();
 
     recipes.forEach(recipe => {
-        const card = document.createElement('div');
+        const card = document.createElement('article');
         card.classList.add('recipeCards');
         card.innerHTML =
 
@@ -92,14 +93,15 @@ function saveRecipe() {
 
 function filterRecipes() {
     // TODO: Call display recipes without filter when the input is empty
+    const input = document.getElementById('searchInput');
+    if (input.value === '') {
+        displayRecipes();
+        return;
+    }
 
-    var input = document.getElementById('searchInput');
-
-    // Obtiene el valor del input
-    var value = input.value;
-
-    // Muestra el valor en la consola o úsalo como prefieras
+    const value = input.value;
     console.log(value);
+
     let recipes = getRecipes();
     console.log('recipes', recipes);
     if (recipes.length == 0) {
@@ -121,3 +123,15 @@ function getRecipes() {
     const recipes = localStorage.getItem('recipes');
     return recipes ? JSON.parse(recipes) : [];
 }
+
+function onInput() {
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        if (searchTerm === '') {
+            displayRecipes();
+        }
+    });
+}
+
+displayRecipes();
+onInput();
