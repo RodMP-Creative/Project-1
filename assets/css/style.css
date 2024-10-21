@@ -90,3 +90,15 @@ section {
 .recipeSteps {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+footer {
+  position: fixed;
+  display: flex;
+  inset: 0;
+  top: calc(100% - 12rem);
+  padding: 2rem;
+  justify-content: center;
+  height: auto;
+  min-height: 20px;
+  line-height: 200px;
+}
