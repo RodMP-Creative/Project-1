@@ -46,16 +46,16 @@ function displayRecipes(filteredRecipes) {
         card.classList.add('recipeCards');
         card.innerHTML =
 
-            `<h2 class="recipeTitle">${recipe.title}</h2>
+            `<h2 class="recipeTitle self-center text-xl mb-4">${recipe.title}</h2>
             <div>
                 <p class="recipeDescription">${recipe.description}</p>
-                <p class="recipeSubtitle">Ingredients</p>
-                <ul class="recipeIngredients">
+                <p class="recipeTitle">Ingredients</p>
+                <ol class="recipeIngredients">
                 ${recipe.ingredients.split(',').map(ingredient => `<li class="ingredientList">${ingredient.trim()}</li>`).join('')}
-                </ul>
-                <p class="recipeSubtitle">Steps</p>
-                <p class="recipeSteps">${recipe.instructions}</p>
-                <button onclick="deleteRecipe(${recipe.id})" class="button">Delete</button>
+                </ol>
+                <p class="recipeTitle">Steps</p>
+                <p class="recipeDescription">${recipe.instructions}</p>
+                <button onclick="deleteRecipe(${recipe.id})" class="button m-2 align absolute">Delete</button>
             </div>`;
         recipeCardsContainer.appendChild(card);
     });
