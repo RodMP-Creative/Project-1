@@ -54,7 +54,11 @@ function displayRecipes(filteredRecipes) {
                 </ol>
                 <p class="recipeTitle">Steps</p>
                 <p class="recipeDescription">${recipe.instructions}</p>
-                <button onclick="deleteRecipe(${recipe.id})" class="button m-2 align absolute">Delete</button>
+                <button onclick="deleteRecipe(${recipe.id})" class="buttonIcon m-2 align absolute">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-1 12H6L5 7m5-4h4m-6 0h8v4H7V3m1 0v1m6 0V3" />
+                    </svg>
+                </button>
             </div>`;
         recipeCardsContainer.appendChild(card);
     });
