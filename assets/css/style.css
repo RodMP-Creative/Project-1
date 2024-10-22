@@ -94,6 +94,8 @@ section {
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 /* Recipe name format here */
@@ -129,7 +131,7 @@ ol li::before {
 }
 
 footer {
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   inset: 0;
   top: calc(100% - 12rem);

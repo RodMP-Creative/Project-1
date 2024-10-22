@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggles the modal when the button is clicked.
     modalBtn.addEventListener('click', () => {
-    
+
         recipeModal.classList.toggle('hidden');
     });
     cancelBtn.addEventListener('click', () => {
@@ -27,34 +27,34 @@ document.addEventListener('DOMContentLoaded', () => {
             updateRecipe(editId);
             alert("Recipe updated");
         } else {
-        saveRecipe();
-        alert("Recipe saved");
+            saveRecipe();
+            alert("Recipe saved");
         }
         recipeModal.classList.toggle('hidden');
-        
+
     });
 
     // Function to delete recipe from local storage.
     window.deleteRecipe = function (id) {
         let confirmDelete = confirm("Do you want to delete the recipe?")
-        if (confirmDelete){
-        let recipes = getRecipes();
-        recipes = recipes.filter(recipe => recipe.id !== id);
-        localStorage.setItem('recipes', JSON.stringify(recipes));
-            
-        alert("Recipe deleted")
-        } 
-        else{
+        if (confirmDelete) {
+            let recipes = getRecipes();
+            recipes = recipes.filter(recipe => recipe.id !== id);
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+
+            alert("Recipe deleted")
+        }
+        else {
             alert("Delete canceled")
         }
         displayRecipes();
-        
+
     };
 
     //Function to edit a recipe
-    window.editRecipe = function (id){
+    window.editRecipe = function (id) {
         const recipes = getRecipes();
-        const recipe = recipes.find(recipe => recipe.id ===id);
+        const recipe = recipes.find(recipe => recipe.id === id);
 
         if (recipe) {
             document.getElementById('title').value = recipe.title;
@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
             editId = id;
 
             document.getElementById('recipeModal').classList.toggle('hidden');
-           
+
         }
-        
+
     };
 
     // Function to update a recipe
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('recipes', JSON.stringify(recipes));
         displayRecipes();
-    
-        
+
+
         editMode = false;
         editId = null;
     }
@@ -115,13 +115,17 @@ function displayRecipes(filteredRecipes) {
                 ${recipe.ingredients.split(',').map(ingredient => `<li class="ingredientList">${ingredient.trim()}</li>`).join('')}
                 </ol>
                 <p class="recipeTitle">Steps</p>
-                <p class="recipeDescription">${recipe.instructions}</p>
-                <button onclick="deleteRecipe(${recipe.id})" class="buttonIcon m-2 align absolute">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-1 12H6L5 7m5-4h4m-6 0h8v4H7V3m1 0v1m6 0V3" />
-                    </svg>
+                <p class="recipeDescription pb-8">${recipe.instructions}</p>
+                
+                <div class="flex justify-end items-center right-0 bottom-0 mr-2 absolute">
+                <button onclick="deleteRecipe(${recipe.id})" class="buttonIcon m-2 align">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 7l-1 12H6L5 7m5-4h4m-6 0h8v4H7V3m1 0v1m6 0V3" />
+                  </svg>
                 </button>
                 <button onclick="editRecipe(${recipe.id})" class="editbutton">Edit</button>
+              </div>
             </div>`;
         recipeCardsContainer.appendChild(card);
     });
