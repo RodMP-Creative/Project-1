@@ -73,14 +73,13 @@ header h1 {
   border-bottom: 2px solid var(--primary-color);
 }
 
-/* Recipe container */
-section {
+.cardSection {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 25px;
   justify-content: center;
-}
+} 
 
 /* Recipe cards */
 .recipeCards {
@@ -141,3 +140,27 @@ footer {
   min-height: 20px;
   line-height: 200px;
 }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    justify-content: center; 
+    padding: 6%; 
+  }
+
+  header h1 {
+    font-size: 5vw; 
+    margin-bottom: 10px; 
+  }
+
+  #modalbutton {
+    justify-content: center;
+  }
+
+  .cardSection {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+}
+
