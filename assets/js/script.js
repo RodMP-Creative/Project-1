@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggles the modal when the button is clicked.
     modalBtn.addEventListener('click', () => {
-
+        resetForm();
+        editMode = false;
+        editId = null;
         recipeModal.classList.toggle('hidden');
     });
     cancelBtn.addEventListener('click', () => {
@@ -33,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         recipeModal.classList.toggle('hidden');
 
     });
+    function resetForm() {
+        form.reset();
+    }
 
     // Function to delete recipe from local storage.
     window.deleteRecipe = function (id) {
