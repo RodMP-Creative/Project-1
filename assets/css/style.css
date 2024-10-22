@@ -44,7 +44,7 @@ header h1 {
   font-weight: 600;
 }
 
-.buttonIcon  {
+.buttonIcon {
   color: var(--primary-color);
   padding: 0.5rem 0.75rem;
   right: 0;
@@ -62,12 +62,13 @@ header h1 {
 .sm\:w-auto {
   width: auto;
 }
+
 .editbutton {
   border-radius: 0.375rem;
   background-color: #F89541;
   color: white;
   width: 80px;
-  justify-content: flex-end ;
+  justify-content: flex-end;
 
 }
 
@@ -80,7 +81,7 @@ section {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 25px;
-  justify-items: center; 
+  justify-items: center;
 }
 
 /* Recipe cards */
@@ -139,22 +140,35 @@ footer {
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    justify-content: center; 
-    padding: 6%; 
+    justify-content: center;
+    padding: 6%;
   }
 
   header h1 {
-    font-size: 5vw; 
-    margin-bottom: 10px; 
+    font-size: 5vw;
+    margin-bottom: 10px;
   }
 
   #modalbutton {
     justify-content: center;
   }
 
+  #modalDiv {
+    width: 100%;
+  }
+
+  #modalContainer {
+    position: unset;
+  }
+
   section {
     grid-template-columns: 1fr;
   }
+
+  #cancelBtn,
+  #saveBtn {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
   }
-
-
+}
