@@ -1,4 +1,4 @@
-# Culinary Chronicles
+# Culinary Chronicles - My Recipe Book
 
 ## Description
 
@@ -17,21 +17,22 @@
 
 - **HTML**: Structure of the webpage.
 - **CSS**: Styling the recipe cards and layout.
+- **TailwindCSS**: CSS Framework for styling and layout the modal. 
 - **JavaScript**: Interactivity, local storage handling, and DOM manipulation.
 - **LocalStorage API**: For saving and retrieving recipes in the browser.
 
 ## Instructions
 ### Adding Recipes 
-**1.** Click the "**Add Recipe**" button.
-**2.** Fill out the form with the recipe title, description, ingredients, and instructions.
-**3.** Click "**Save**" to add the recipe to the list.
+1. Click the "**Add Recipe**" button.
+2. Fill out the form with the recipe title, description, ingredients, and instructions.
+3. Click "**Save**" to add the recipe to the list.
 ### Editing Recipes 
-**1.** Click the "**Edit**" button on the recipe card you want to modify.
-**2.** Modify the recipe details in the form that appears.
-**3.** Click "**Save**" to update the recipe.
+1. Click the "**Edit**" button on the recipe card you want to modify.
+2. Modify the recipe details in the form that appears.
+3. Click "**Save**" to update the recipe.
 ### Deleting Recipes
-**1.** Click the "**Delete**" button on the recipe 
-**2.** Confirm the deletion in the prompt
-###Searching Recipes
-**1.** Use the search bar at the top to filter recipes
-**2.** The list will automatically update as you type 
+1. Click the "**Delete**" button on the recipe. 
+2. Confirm the deletion in the prompt.
+### Searching Recipes
+1. Use the search bar at the top to filter recipes.
+2. The list will automatically update as you type. 
