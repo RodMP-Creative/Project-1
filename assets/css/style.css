@@ -10,6 +10,8 @@ body {
   padding: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: var(--font-color);
+  display: grid;
+  min-height: 100dvh;
 }
 
 header {
@@ -131,13 +133,29 @@ ol li::before {
 }
 
 footer {
-  /* position: fixed; */
-  display: flex;
-  inset: 0;
-  top: calc(100% - 12rem);
-  padding: 2rem;
-  justify-content: center;
-  height: auto;
-  min-height: 20px;
-  line-height: 200px;
+  padding: 20px;
+  text-align: center;
 }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    justify-content: center; 
+    padding: 6%; 
+  }
+
+  header h1 {
+    font-size: 5vw; 
+    margin-bottom: 10px; 
+  }
+
+  #modalbutton {
+    justify-content: center;
+  }
+
+  section {
+    grid-template-columns: 1fr;
+  }
+  }
+
+

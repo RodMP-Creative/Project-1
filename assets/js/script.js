@@ -105,7 +105,7 @@ function displayRecipes(filteredRecipes) {
 
     recipes.forEach(recipe => {
         const card = document.createElement('article');
-        card.classList.add('recipeCards');
+        card.classList.add('recipeCards', 'w-full');
         card.innerHTML =
             `<h2 class="recipeTitle self-center text-xl mb-4">${recipe.title}</h2>
             <div>
