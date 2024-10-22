@@ -24,7 +24,7 @@
 ## Instructions
 ### Adding Recipes 
 1. Click the "**Add Recipe**" button.
-2. Fill out the form with the recipe title, description, ingredients, and instructions.
+2. Fill out the form with the recipe title, description (comma separated), ingredients, and instructions.
 3. Click "**Save**" to add the recipe to the list.
 ### Editing Recipes 
 1. Click the "**Edit**" button on the recipe card you want to modify.
