@@ -1,6 +1,8 @@
 // Get the form and the container where the recipe cards will be displayed.
 const form = document.getElementById('recipeForm');
 const recipeCardsContainer = document.getElementById('recipeCards');
+let editMode = false;
+let editId = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Get the modal and the buttons that open and close it.
@@ -10,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggles the modal when the button is clicked.
     modalBtn.addEventListener('click', () => {
+    
         recipeModal.classList.toggle('hidden');
     });
     cancelBtn.addEventListener('click', () => {
@@ -19,18 +22,77 @@ document.addEventListener('DOMContentLoaded', () => {
     // Waits for submit button in order to run "saveRecipe" function and dave input values.
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        if (editMode) {
+            updateRecipe(editId);
+            alert("Recipe updated");
+        } else {
         saveRecipe();
+        alert("Recipe saved");
+        }
         recipeModal.classList.toggle('hidden');
+        
     });
 
     // Function to delete recipe from local storage.
     window.deleteRecipe = function (id) {
+        let confirmDelete = confirm("Do you want to delete the recipe?")
+        if (confirmDelete){
         let recipes = getRecipes();
         recipes = recipes.filter(recipe => recipe.id !== id);
         localStorage.setItem('recipes', JSON.stringify(recipes));
+            
+        alert("Recipe deleted")
+        } 
+        else{
+            alert("Delete canceled")
+        }
         displayRecipes();
-    }
+        
+    };
 
+    //Function to edit a recipe
+    window.editRecipe = function (id){
+        const recipes = getRecipes();
+        const recipe = recipes.find(recipe => recipe.id ===id);
+
+        if (recipe) {
+            document.getElementById('title').value = recipe.title;
+            document.getElementById('description').value = recipe.description;
+            document.getElementById('ingredients').value = recipe.ingredients;
+            document.getElementById('instructions').value = recipe.instructions;
+
+            editMode = true;
+            editId = id;
+
+            document.getElementById('recipeModal').classList.toggle('hidden');
+           
+        }
+        
+    };
+
+    // Function to update a recipe
+    function updateRecipe(id) {
+        let recipes = getRecipes();
+        recipes = recipes.map(recipe => {
+            if (recipe.id === id) {
+                return {
+                    id,
+                    title: document.getElementById('title').value,
+                    description: document.getElementById('description').value,
+                    ingredients: document.getElementById('ingredients').value,
+                    instructions: document.getElementById('instructions').value,
+                };
+            }
+            return recipe;
+        });
+
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        displayRecipes();
+    
+        
+        editMode = false;
+        editId = null;
+    }
     // Display recipes when the page loads
     displayRecipes();
 });
@@ -55,6 +117,7 @@ function displayRecipes(filteredRecipes) {
                 <p class="recipeSubtitle">Steps</p>
                 <p class="recipeSteps">${recipe.instructions}</p>
                 <button onclick="deleteRecipe(${recipe.id})" class="button">Delete</button>
+                <button onclick="editRecipe(${recipe.id})" class="editbutton">Edit</button>
             </div>`;
         recipeCardsContainer.appendChild(card);
     });
@@ -97,6 +160,13 @@ function filterRecipes() {
 
     // Obtiene el valor del input
     var value = input.value;
+
+   //Shows an alert if search is empty
+    if (value === "") {
+        alert("Search is empty");
+        displayRecipes();
+        return;
+    }
 
     // Muestra el valor en la consola o úsalo como prefieras
     console.log(value);
