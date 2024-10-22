@@ -45,7 +45,6 @@ function displayRecipes(filteredRecipes) {
         const card = document.createElement('article');
         card.classList.add('recipeCards');
         card.innerHTML =
-
             `<h2 class="recipeTitle self-center text-xl mb-4">${recipe.title}</h2>
             <div>
                 <p class="recipeDescription">${recipe.description}</p>
@@ -92,35 +91,27 @@ function saveRecipe() {
 }
 
 function filterRecipes() {
-    // TODO: Call display recipes without filter when the input is empty
     const input = document.getElementById('searchInput');
-    if (input.value === '') {
+    const value = input.value;
+    if (value === '') {
         displayRecipes();
         return;
     }
 
-    const value = input.value;
-    console.log(value);
-
     let recipes = getRecipes();
-    console.log('recipes', recipes);
-    if (recipes.length == 0) {
-        alert('No recipes found');
-        return;
-    }
-
     let filteredRecipe = recipes.filter(recipe => recipe.title.toLowerCase().includes(value.toLowerCase()));
-    console.log('filteredRecipe', filteredRecipe);
-    displayRecipes(filteredRecipe);
-}
 
-function resetRecipes() {
-    console.log('reset', recipes);
+    displayRecipes(filteredRecipe);
 }
 
 // Function to get recipes from local storage
 function getRecipes() {
     const recipes = localStorage.getItem('recipes');
+    if (!recipes) {
+        const noContentEl = document.createElement('p');
+        noContentEl.textContent = 'No recipes found!';
+        recipeCardsContainer.appendChild(noContentEl);
+    }
     return recipes ? JSON.parse(recipes) : [];
 }
 
